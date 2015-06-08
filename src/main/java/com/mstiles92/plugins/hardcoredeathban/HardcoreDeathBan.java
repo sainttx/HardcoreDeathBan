@@ -23,23 +23,19 @@
 
 package com.mstiles92.plugins.hardcoredeathban;
 
-import com.mstiles92.plugins.hardcoredeathban.config.Config;
-import com.mstiles92.plugins.hardcoredeathban.util.Log;
-import com.mstiles92.plugins.stileslib.calendar.CalendarUtils;
-import com.mstiles92.plugins.stileslib.commands.CommandRegistry;
-import com.mstiles92.plugins.stileslib.updates.UpdateChecker;
 import com.mstiles92.plugins.hardcoredeathban.commands.Credits;
 import com.mstiles92.plugins.hardcoredeathban.commands.Deathban;
+import com.mstiles92.plugins.hardcoredeathban.config.Config;
 import com.mstiles92.plugins.hardcoredeathban.listeners.PlayerListener;
 import com.mstiles92.plugins.hardcoredeathban.util.Bans;
+import com.mstiles92.plugins.hardcoredeathban.util.Log;
 import com.mstiles92.plugins.hardcoredeathban.util.RevivalCredits;
+import com.mstiles92.plugins.stileslib.commands.CommandRegistry;
+import com.mstiles92.plugins.stileslib.updates.UpdateChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
-
-import java.io.IOException;
 
 /**
  * HardcoreDeathBan is the main class of this Bukkit plugin.
@@ -79,13 +75,6 @@ public class HardcoreDeathBan extends JavaPlugin {
         if (config.shouldCheckForUpdates()) {
             updateChecker = new UpdateChecker(this, 42801, "hardcoredeathban", 216000);
             updateChecker.start();
-        }
-
-        try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-        } catch (IOException e) {
-            Log.warning(ChatColor.RED + "Error starting metrics!");
         }
     }
 
